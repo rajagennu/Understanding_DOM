@@ -169,6 +169,130 @@ for ( var index = 0; index < liEven.length ; index++) {
 
 ```
 
+If any HTML collection has child items, you can list all child nodes using `childNodes`
+
+```js
+const list = document.querySelector('ul.collection');
+val = list.childNotes ;
+console.log(val);
+```
+
+child element nodes
+```
+val = list.children;
+```
+
+`.nodeName` - Give Node Name 
+`.nodeType` - Gives Node type as per below chart 
+
+1 - Element
+2 - attribute 
+3 - Text Node 
+8 - Comment 
+9 = Document itself 
+10 = doctype 
+
+Children of Children 
+
+```javascript
+val = list.children[3].children;
+val = list.firstChild ;
+val = list.firstElementChild ;
+
+val = list.lastChild ;
+val = list.lastElementChild ;
+val = list.childElementCount ;  
+```
+
+Similar to Child we have Parent, sibling methods. Google them for more information. 
+
+### Creating Elements 
+
+```javascript
+
+// create element 
+const li = document.createElement('li');
+
+// add class 
+li.className = 'collection-item';
+
+// add ID 
+li.id = 'new-item';
+
+// add attribute 
+li.setAttribute('title', 'New Item');
+
+// create text node 
+li.appendChild(document.createTextNode('Hello'));
+
+// create new link element 
+const link = document.createElement('a');
+
+// Add class
+link.className = 'class-name';
+
+// add inner HTML 
+link.innerHTML = '<span> Hello </span><i class="fa fa-remove"></i>';
+
+// Append li as child to ul 
+document.querySelector('ul.collection').appendChild(li);
+
+```
+
+### Remove & Replace elements in DOM 
+
+```javascript
+
+// Replace element 
+
+// create element 
+const newHeading = document.createElement('h2');
+
+newHeading.id = 'task-title';
+
+newHeading.appendChild(document.createTextNode('Task List'));
+
+const oldHeading = document.getElementById('task-title');
+
+const cardAction = document.querySelector('.card-action');
+
+cardAction.replaceChild(newHeading, oldHeading);
+
+console.log(newHeading);
+
+// Remove Element 
+
+const lis = document.querySelectorAll('li');
+const list = document.querySelector('ul');
+
+// Remove list item 
+lis[0].remove();
+
+// Remove child element 
+list.removeChild(lis[3]);
+
+// classes attr 
+
+const firstLi = document.queryselector('li:first-child');
+console.log(firstLi.children[0]);
+const link = firstLi.children[0];
+
+let val ;
+val = link.ClassName ; // string of the classes
+var = link.classList ; // DOM token list but with index. 
+link.classList.add('test'); // remove : .remove('test')
+val = link; 
+
+// attribute 
+
+val = link.getAttribute('href');
+val = link.setAttribute('href','http://google.com');
+val = link.hasAttribute('href'); // true / false 
+link.removeAttribute('title');
+
+```
+
+### Events Listeners and The Event Object.
 
 
 
